@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Compare Versions - {{ article_data.versions[-1].title }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Compare Versions - {{ article_data.versions[-1].title }}</h1>
+    <h3>Versions:</h3>
+    <ul>
+        <li>{{ version1.title }} ({{ version1.timestamp }})</li>
+        <li>{{ version2.title }} ({{ version2.timestamp }})</li>
+    </ul>
+
+    <h3>Differences:</h3>
+    <div class="compare-content">
+        {{ render_diff(version1.content, version2.content) | markdown_to_html | safe }}
+    </div>
+
+    <a href="{{ url_for('view_article_versions', filename=article_data.filename) }}" class="btn btn-primary mt-3">Back to Versions</a>
+{% endblock %}

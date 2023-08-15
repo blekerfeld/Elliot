@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirm Delete
+{% endblock %}
+
+{% block content %}
+    <h1>Confirm Delete</h1>
+    <p>Are you sure you want to delete the article "{{ article.versions[-1].title }}"?</p>
+    
+    <form method="post" action="{{ url_for('delete_article', filename=article.filename) }}">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{{ url_for('manage_articles') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}

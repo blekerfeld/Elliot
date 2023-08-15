@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ article_data.versions[-1].title }} - {{ version.title }} (Version)
+{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('view_article_versions', filename=article_data.filename) }}" class="float-right btn btn-primary ">Back to Versions</a>
+    <h1>{{ article_data.versions[-1].title }} - {{ version.title }} (Version)</h1>
+    <p>Timestamp: {{ version.timestamp }}</p>
+    <br />
+    <div class="article-content markdown-body">
+        {{ version.content|markdown_to_html|link_articles|safe }}
+    </div>
+{% endblock %}

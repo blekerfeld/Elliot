@@ -1,0 +1,174 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set font and background colors */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Center content */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style navigation menu */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Style article title and content */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.article-content {
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.search-highlight {
+    margin-top: 10px;
+}
+
+/* Style the form container */
+.form-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form fields */
+.form-group {
+    margin: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the submit button */
+.form-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+.list-group-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f0f0f0;
+}
+
+.list-group-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.list-group-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Styling for "No results found" message */
+p.no-results {
+    font-size: 1.25rem;
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* wikipedia-style.css */
+
+/* Set max width and center the article content */
+.article-content {
+    margin: 0 auto;
+    padding: 20px; /* Add some spacing around the content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.article-content p {
+    line-height: 1.6;
+    margin: 1.2em 0;
+}
+
+.article-content h2, .article-content h3, .article-content h4 {
+    margin-top: 1.5em;
+}
+
+.article-content ul, .article-content ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.article-content li {
+    margin-bottom: 0.5em;
+}
+
+/* Apply Wikipedia-like link styling */
+.article-content a {
+    color: #0645AD;
+    text-decoration: none;
+    border-bottom: 1px solid #0645AD;
+}
+
+.article-content a:hover {
+    border-bottom: none;
+}
+
+/* Style blockquotes */
+.article-content blockquote {
+    border-left: 4px solid #DDD;
+    margin: 0;
+    padding-left: 1em;
+    font-style: italic;
+}
