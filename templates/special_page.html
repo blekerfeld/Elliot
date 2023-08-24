@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ article.versions[-1].title }}
+{% endblock %}
+
+{% block content %}
+    <div class='markdown-body'><h1><strong>{{ article.versions[-1].title }}</strong></h1></div>
+    
+    <div class="article-content markdown-body">
+        {{ article.versions[-1].content|markdown_to_html|link_articles|safe }}
+    </div>
+    <br />
+    <span class="alert alert-light fnt-10">
+        <div class="float_right">
+            <a href="{{ url_for('articles.view_article_versions', filename=article.filename) }}" class="badge badge-light">View Versions</a>
+            <a href="{{ url_for('articles.edit_article', filename=article.filename) }}" class="badge badge-light">Edit Article</a>
+        </div>
+        <em>Last change: {{ article.versions[-1].timestamp | format_timestamp }}</em></span><br style="clear: both" />  
+  
+    {% endblock %}

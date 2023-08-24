@@ -7,32 +7,54 @@
 {% block content %}
     <h1>Manage Articles</h1>
     
+    <form action="{{ url_for('articles.perform_bulk_action') }}" method="post" class="mb-3">
+        <div class="form-group">
+            <label for="bulk-action">Bulk Action:</label>
+            <select name="bulk_action" id="bulk-action" class="form-control">
+                <option value="delete">Delete Selected</option>
+                <!-- Add other bulk actions as needed -->
+            </select>
+        </div>
+        <button type="submit" class="btn btn-danger">Apply</button>
+    </form>
+    
     {% if pagination.total == 0 %}
         <p>No articles found.</p>
     {% else %}
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
+                    <th></th>
                     <th>Article Title</th>
+                    <th>Tags</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for article in articles %}
                     <tr>
-                        <td>{{ article.title }}</td>
+                        <td><input type="checkbox" name="selected_articles" value="{{ article.filename }}"></td>
+                        <td style="width: auto">
+                            {% if article.filename.startswith('sp_') %}
+                                <span class="btn btn-warning btn-sm p-1">Special</span>
+                            {% endif %}
+                            <a href="{{ url_for('articles.view_article', filename=article.filename) }}">{{ article.title }}</a>
+                        </td>
                         <td>
-                            <form method="post" action="{{ url_for('delete_article', filename=article.filename) }}">
-                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                            </form>
-                            <a href="{{ url_for('edit_article', filename=article.filename) }}" class="btn btn-info btn-sm">Edit</a>
-                            <a href="{{ url_for('view_article_versions', filename=article.filename) }}" class="btn btn-secondary btn-sm">Show All Versions</a>
+                            {% for tag in article.tags %}
+                                <a href="{{ url_for('articles.tagged_articles', tag=tag) }}"  class="btn btn-info btn-sm p-1">{{ tag }}</a>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('articles.confirm_delete', filename=article.filename) }}" class="btn btn-danger btn-sm">Remove</a>
+                            <a href="{{ url_for('articles.edit_article', filename=article.filename) }}" class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{ url_for('articles.view_article_versions', filename=article.filename) }}" class="btn btn-secondary btn-sm">Show All Versions</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-
+        
         <!-- Pagination -->
         <div class="pagination">
             {{ pagination.info }}
@@ -40,5 +62,5 @@
         </div>
     {% endif %}
     
-    <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Back to Home</a>
+    <a href="{{ url_for('articles.index') }}" class="btn btn-primary mt-3">Back to Home</a>
 {% endblock %}

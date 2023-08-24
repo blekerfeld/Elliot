@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <a href="{{ url_for('view_article_versions', filename=article_data.filename) }}" class="float-right btn btn-primary ">Back to Versions</a>
-    <h1>{{ article_data.versions[-1].title }} - {{ version.title }} (Version)</h1>
+    <a href="{{ url_for('articles.view_article_versions', filename=article_data.filename) }}" class="float-right btn btn-primary ">Back to Versions</a>
+    <h3>{{ version.title }} (Version)</h3>
     <p>Timestamp: {{ version.timestamp }}</p>
     <br />
     <div class="article-content markdown-body">

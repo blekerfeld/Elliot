@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Articles Tagged "{{ tag }}"
+{% endblock %}
+
+{% block content %}
+<div class='markdown-body'><h2>#{{ tag }}</h2></div>
+    <br />
+    {% if articles %}
+        <div class="list-group">
+            {% for article in articles %}
+                <a href="{{ url_for('articles.view_article', filename=article.filename) }}" class="btn-secondary list-group-item list-group-item-action">
+                    <h4 class="mb-1">{{ article.title }}</h4>
+                    <p class="mb-1">{{ article.content|safe }}</p>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div class="pagination mt-4">
+            {% if pagination.has_pages %}
+                {{ pagination.info }}
+                {{ pagination.links }}
+            {% endif %}
+        </div>
+    {% else %}
+        <p class="no-results">No articles found for tag "{{ tag }}".</p>
+    {% endif %}
+
+    <a href="{{ url_for('articles.index') }}" class="btn btn-primary mt-3">Back to Home</a>
+{% endblock %}

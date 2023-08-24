@@ -7,7 +7,7 @@
 {% block content %}
     <h1 class="mb-4">{{ article.versions[-1].title }} - Versions</h1>
     <div class="table-responsive">
-        <form method="post" action="{{ url_for('compare_versions', filename=article.filename) }}">
+        <form method="post" action="{{ url_for('articles.compare_versions', filename=article.filename) }}">
             <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>
@@ -18,17 +18,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for version in article.versions %}
+                    {% for version in article.versions[::-1] %}
                         <tr>
                             <td>
                                 <input type="checkbox" name="selected_versions" value="{{ version.timestamp }}">
                             </td>
                             <td>{{ version.title }}</td>
-                            <td>{{ version.timestamp }}</td>
+                            <td>{{ version.timestamp | format_timestamp }}</td>
                             <td>
-                                <a href="{{ url_for('view_specific_version', filename=article.filename, timestamp=version.timestamp) }}" class="btn btn-info btn-sm">View</a>
-                                <a href="{{ url_for('restore_version', filename=article.filename, timestamp=version.timestamp) }}" class="btn btn-success btn-sm">Restore</a>
-                                <a href="{{ url_for('delete_version', filename=article.filename, timestamp=version.timestamp) }}" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="{{ url_for('articles.view_specific_version', filename=article.filename, timestamp=version.timestamp) }}" class="btn btn-info btn-sm">View</a>
+                                <a href="{{ url_for('articles.restore_version', filename=article.filename, timestamp=version.timestamp) }}" class="btn btn-success btn-sm">Restore</a>
+                                <a href="{{ url_for('articles.delete_version', filename=article.filename, timestamp=version.timestamp) }}" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -37,5 +37,5 @@
             <button type="submit" class="btn btn-primary">Compare Selected Versions</button>
         </form>
     </div>
-    <a href="{{ url_for('view_article', filename=article.filename) }}" class="btn btn-primary mt-3">Back to Article</a>
+    <a href="{{ url_for('articles.view_article', filename=article.filename) }}" class="btn btn-primary mt-3">Back to Article</a>
 {% endblock %}

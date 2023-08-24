@@ -5,13 +5,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ article.versions[-1].title }}</h1>
-    <p>Tags: {{ ', '.join(article.versions[-1].tags) }}</p>
-    
-    <div class="mb-3">
-        <a href="{{ url_for('edit_article', filename=article.filename) }}" class="btn btn-primary">Edit Article</a>
-        <a href="{{ url_for('view_article_versions', filename=article.filename) }}" class="btn btn-secondary">View Versions</a>
+    <div class="float_right">
+        <a href="{{ url_for('articles.view_article_versions', filename=article.filename) }}" class="btn btn-outline-secondary">View Versions</a>
+        <a href="{{ url_for('articles.edit_article', filename=article.filename) }}" class="btn btn-outline-primary ml-2">Edit Article</a>
     </div>
+    
+    <div class='markdown-body'><h1><strong>{{ article.versions[-1].title }}</strong></h1></div>
+    <span class="article-date"><em>Last change: {{ article.versions[-1].timestamp | format_timestamp }}</em></span><br style="clear: both" />
+
+    {% if article.versions[-1].tags %}
+        <div class="tags">
+            {% for tag in article.versions[-1].tags %}
+                <a href="{{ url_for('articles.tagged_articles', tag=tag) }}" class="btn btn-info btn-sm">{{ tag }}</a>
+            {% endfor %}
+        </div><br />
+    {% endif %}
     
     <div class="article-content markdown-body">
         {{ article.versions[-1].content|markdown_to_html|link_articles|safe }}
