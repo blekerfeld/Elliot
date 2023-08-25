@@ -12,8 +12,11 @@
     <h2>
         {% if article_data %}
             Edit Article - {{ article_data.versions[-1].title }}
-            {% if article_data.filename.startswith('sp_') %}
+            {% if article_data.filename.startswith('_sp_') %}
                 <span class="btn btn-warning btn-sm p-1">Special</span>
+            {% endif %}
+            {% if article_data.filename.startswith('_bl_') %}
+                <span class="btn btn-success btn-sm p-1">Block</span>
             {% endif %}
         {% else %}
             Create New Article
@@ -23,7 +26,7 @@
         <form method="post" {% if article_data %}action="{{ url_for('articles.edit_article', filename=article_data.filename) }}"{% else %}action="{{ url_for('articles.new_article') }}"{% endif %}>
             <div class="form-group">
                 <label for="filename">Filename:</label>
-                <input type="text" id="filename" name="filename" class="form-control" {% if article_data %}value="{{ article_data.filename }}"{% endif %} required>
+                <input type="text" id="filename" name="filename" class="form-control" {% if article_data %}value="{{ article_data.filename }}"{% endif %} required >
                 <input type="hidden" id="filename_old" name="filename_old" class="form-control" {% if article_data %}value="{{ article_data.filename }}"{% endif %}>
             </div>
             <div class="form-group">

@@ -1,0 +1,29 @@
+{
+    "filename": "Test",
+    "versions": [
+        {
+            "title": "Test artikel met infobox",
+            "tags": [
+                "test"
+            ],
+            "content": "{{Infobox|test|test}}",
+            "timestamp": "2023-08-25T02:05:14.875559"
+        },
+        {
+            "title": "Test artikel met infobox",
+            "tags": [
+                "test"
+            ],
+            "content": "{{infobox|name=Test|author=John Doe}}",
+            "timestamp": "2023-08-25T02:06:27.570753"
+        },
+        {
+            "title": "Test artikel met infobox",
+            "tags": [
+                "test"
+            ],
+            "content": "{{Infobox|name=Test|author=John Doe}}",
+            "timestamp": "2023-08-25T02:06:35.073440"
+        }
+    ]
+}

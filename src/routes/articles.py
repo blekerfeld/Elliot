@@ -10,7 +10,7 @@ blueprint_article = Blueprint('articles', __name__)
 @blueprint_article.route('/')
 def index():
     try:
-        homepage_article = articles.load_article("sp_Homepage")
+        homepage_article = articles.load_article("_sp_Homepage")
         return render_template('special_page.html', article=homepage_article)
     except:
         return render_template('index.html')
@@ -18,7 +18,7 @@ def index():
 @blueprint_article.route('/about')
 def about():
     try:
-        about = articles.load_article("sp_About")
+        about = articles.load_article("_sp_About")
         return render_template('special_page.html', article=about)
     except:
         return render_template('index.html')
@@ -132,7 +132,7 @@ def confirm_delete(filename):
 def delete_article(filename):
     article_data = articles.load_article(filename)
     if article_data:
-        os.remove(os.path.join('articles', filename + '.json'))
+        os.remove(os.path.join('content', filename + '.json'))
     return redirect(url_for('manage_articles'))
 
 
@@ -146,6 +146,6 @@ def perform_bulk_action():
             for filename in selected_articles:
                 article_data = articles.load_article(filename)
                 if article_data:
-                    os.remove(os.path.join('articles', filename + '.json'))
+                    os.remove(os.path.join('content', filename + '.json'))
 
     return redirect(url_for('articles.manage_articles'))

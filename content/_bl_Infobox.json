@@ -1,0 +1,115 @@
+{
+    "filename": "_bl_Infobox",
+    "versions": [
+        {
+            "title": "Infobox",
+            "tags": [],
+            "content": "Infobox\r\n> **@$name** and *@$author*",
+            "timestamp": "2023-08-25T01:47:51.303647"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox\">\r\n    <div class=\"infobox-image\">\r\n        <img src=\"{{image_url}}\" alt=\"{{name}}\">\r\n    </div>\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">{{name}}</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>{{author}}</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>{{date}}</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:10:07.647331"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox\">\r\n    <div class=\"infobox-image\">\r\n        <img src=\"@$image_url\" alt=\"@$name\">\r\n    </div>\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">{{name}}</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>{{author}}</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>{{date}}</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:10:37.435395"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox\">\r\n    <div class=\"infobox-image\">\r\n        <img src=\"@$image_url\" alt=\"@$name\">\r\n    </div>\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:14:54.271106"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\">\r\n    <div class=\"infobox-image\">\r\n        <img src=\"@$image_url\" alt=\"@$name\">\r\n    </div>\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:16:06.143710"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:18:11.756621"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:50%\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:18:24.381091"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:40%\">\r\n    <table style=\"width:100%\">\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:18:39.431475"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:40%;\">\r\n    <table style=\"width:100%;\">\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:18:59.103720"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:40%;\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:20:14.919741"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:20%;\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:20:21.431146"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:25%;\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:25:15.626645"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:25%;\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:25:13.077853"
+        },
+        {
+            "title": "Infobox",
+            "tags": [
+                ""
+            ],
+            "content": "<div class=\"infobox float_right\" style=\"width:25%;\">\r\n    <table>\r\n        <tr>\r\n            <th colspan=\"2\">@$name</th>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Author:</strong></td>\r\n            <td>@$author</td>\r\n        </tr>\r\n        <tr>\r\n            <td><strong>Date:</strong></td>\r\n            <td>@$date</td>\r\n        </tr>\r\n    </table>\r\n</div>",
+            "timestamp": "2023-08-25T02:25:15.626645"
+        }
+    ]
+}

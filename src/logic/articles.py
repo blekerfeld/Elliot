@@ -1,17 +1,19 @@
-import os, json, datetime
+import os
+import re
+import json
+import difflib
 from flask import request, render_template, redirect, url_for
-from datetime import datetime, timedelta
-import os, json, pathlib, markdown, re, difflib
+from datetime import datetime
 
 def load_article(filename):
-    file_path = os.path.join('articles', filename + '.json')
+    file_path = os.path.join('content', filename + '.json')
     with open(file_path, 'r') as file:
         article_data = json.load(file)
     return article_data
 
 def get_article_list():
     article_list = []
-    for filename in os.listdir('articles'):
+    for filename in os.listdir('content'):
         if filename.endswith('.json'):
             article_data = load_article(filename[:-5])
             if article_data:
@@ -70,7 +72,7 @@ def create_or_edit_article(filename):
     return render_template('create_edit_article.html', article_data=article_data)
 
 def save_article(filename, title, tags, content):
-    file_path = os.path.join('articles', filename + '.json')
+    file_path = os.path.join('content', filename + '.json')
 
     timestamp = datetime.now().isoformat()
     version = {
@@ -89,14 +91,14 @@ def save_article(filename, title, tags, content):
         json.dump(article_data, file, indent=4)
 
 def save_article_data(filename, article_data):
-    file_path = os.path.join('articles', f'{filename}.json')
+    file_path = os.path.join('content', f'{filename}.json')
     with open(file_path, 'w') as file:
         json.dump(article_data, file, indent=4)
 
 
 def rename_article_file(old_filename, new_filename):
-    old_file_path = os.path.join('articles', f'{old_filename}.json')
-    new_file_path = os.path.join('articles', f'{new_filename}.json')
+    old_file_path = os.path.join('content', f'{old_filename}.json')
+    new_file_path = os.path.join('content', f'{new_filename}.json')
     
     if os.path.exists(old_file_path):
         # Load the article data from the old JSON file
@@ -124,7 +126,7 @@ def save_new_version(filename, new_version):
 def get_tagged_articles(tag):
     tagged_articles = []
 
-    for filename in os.listdir('articles'):
+    for filename in os.listdir('content'):
         if filename.endswith('.json'):
             article_data = load_article(filename[:-5])
             if article_data:
@@ -153,3 +155,42 @@ def render_diff(text1, text2):
             result.append(line)
 
     return '\n'.join(result)
+
+def render_block_content(content, variables):
+    for variable, value in variables.items():
+        content = content.replace(r'@$' + variable, value)
+    return content
+
+def render_article_with_blocks(article_content):
+    block_reference_pattern = r'\{\{([a-zA-Z0-9_]+)(.*?)\}\}'
+    rendered_content = article_content
+
+    matches = re.findall(block_reference_pattern, article_content)
+    for block_name, variable_string in matches:
+        # Load block data if it exists
+        try:
+            block_data = load_article("_bl_" + block_name)
+        except FileNotFoundError:
+            block_data = None
+
+        if block_data:
+            variables = {}
+            if variable_string:
+                variable_pairs = variable_string.split('|')
+                for variable_pair in variable_pairs:
+                    parts = variable_pair.split('=')
+                    if len(parts) == 2:
+                        variable, value = parts
+                        variables[variable] = value
+
+            # Render block content with variables
+            block_content = render_block_content(block_data['versions'][-1]['content'], variables)
+            rendered_content = rendered_content.replace('{{' + block_name + variable_string + '}}', block_content)
+        else:
+            # If block not found, keep the text as is
+            rendered_content = rendered_content.replace('{{' + block_name + variable_string + '}}', '{{' + block_name + variable_string + '}}')
+
+    return rendered_content
+
+
+

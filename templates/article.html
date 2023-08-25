@@ -16,12 +16,14 @@
     {% if article.versions[-1].tags %}
         <div class="tags">
             {% for tag in article.versions[-1].tags %}
-                <a href="{{ url_for('articles.tagged_articles', tag=tag) }}" class="btn btn-info btn-sm">{{ tag }}</a>
+                {% if tag != "" %}
+                    <a href="{{ url_for('articles.tagged_articles', tag=tag) }}"  class="btn btn-info btn-sm p-1">{{ tag }}</a>
+                {% endif %}
             {% endfor %}
         </div><br />
     {% endif %}
     
     <div class="article-content markdown-body">
-        {{ article.versions[-1].content|markdown_to_html|link_articles|safe }}
+        {{ article.versions[-1].content|markdown_to_html|link_articles|render_blocks|safe }}
     </div>
 {% endblock %}

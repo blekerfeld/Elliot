@@ -6,7 +6,7 @@ from src.logic import articles
 def search_articles(query):
     search_results = []
 
-    for filename in os.listdir('articles'):
+    for filename in os.listdir('content'):
         if filename.endswith('.json'):
             article_data = articles.load_article(filename[:-5])
             if article_data:
