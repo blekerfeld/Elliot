@@ -7,10 +7,19 @@ import os
 # Create a Blueprint instance for the search routes
 blueprint_article = Blueprint('articles', __name__)
 
+@blueprint_article.context_processor
+def inject_articles_functions():
+    return dict(load_article=articles.load_article, parse_menu_content = articles.parse_menu_content)
+
 @blueprint_article.route('/')
 def index():
     try:
         homepage_article = articles.load_article("_sp_Homepage")
+        menu_article = articles.load_article('_sp_Menu')
+        latest_version = menu_article['versions'][-1]
+        menu_content = latest_version['content']
+        parsed_menu = articles.parse_menu_content(menu_content)
+        print(menu_content)
         return render_template('special_page.html', article=homepage_article)
     except:
         return render_template('index.html')

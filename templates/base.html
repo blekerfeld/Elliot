@@ -7,43 +7,53 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/markdown.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link href="https://cdn.jsdelivr.net/npm/jquery.tagify@0.1.0/jquery.tagify.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery.tagify@0.1.0/jquery.tagify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/smoothstate@0.7.2/jquery.smoothState.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
-    <script src="{{ url_for('static', filename='js/smoothstate.js') }}"></script>
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='js/pace.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-        <a class="navbar-brand" href="{{ url_for('articles.index') }}">My Wiki</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('articles.index') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('articles.new_article') }}">Create New Article</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('articles.manage_articles') }}">Manage Articles</a>
-                </li>
+    <div class="d-flex flex-fill navbar-expand-md ">
+        <nav id="sidebar" class="flex-fill bg-light navbar-expand-md">
+            <div class="sidebar-header">
+                <img style="width:40%;;" src="{{ url_for('static', filename='logo.png') }}" /><br />
+                <h3><strong>My Wiki</strong></h3>
+            </div>
+            <div class="search-bar p-3">
+                <form class="form-inline" method="get" action="{{ url_for('search.search') }}">
+                    <input class="form-control mr-sm-2 w-100" type="search" name="query" id="searchInput" placeholder="Search for articles..." aria-label="Search">
+                </form>
+            </div>
+            <ul class="list-unstyled components p-2">
+                {% set menu_article = load_article('_sp_Menu') %}
+                {% set latest_version = menu_article['versions'][-1] %}
+                {% set menu_content = latest_version['content'] %}
+                {% set menu_items = parse_menu_content(menu_content) %}
+                {% for item in menu_items %}
+                    <li>
+                        {% if item.sub_items %}
+                            <a href="#submenu_{{ loop.index }}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ item.title }}</a>
+                            <ul class="collapse list-unstyled" id="submenu_{{ loop.index }}">
+                                {% for sub_item in item.sub_items %}
+                                    <li><a href="{{ sub_item.link }}">{{ sub_item.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <a href="{{ item.link }}">{{ item.title }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
             </ul>
+        </nav>
+        <div class="content flex-fill search-here">
+            {% block content %}{% endblock %}
         </div>
-    </nav>
-    
-    <div class="search-bar bg-light p-3">
-        <form class="form-inline" method="get" action="{{ url_for('search.search') }}">
-            <input class="form-control mr-sm-2 block-100" type="search" name="query" id="searchInput" placeholder="Search articles..." aria-label="Search">
-        </form>
-    </div>
-    <div class="content">
-        {% block content %}{% endblock %}
     </div>
     <footer class="footer mt-5">
         <p>&copy; <script>document.write( new Date().getFullYear() );</script> Emma de Roo</p>
@@ -70,9 +80,9 @@
                 data: { query: query },
                 success: function(data) {
                     // Update content with search results and store previous content and query
-                    previousContent = document.querySelector('.content').innerHTML;
+                    previousContent = document.querySelector('.search-here').innerHTML;
                     previousQuery = query;
-                    document.querySelector('.content').innerHTML = data;
+                    document.querySelector('.search-here').innerHTML = data;
                     
                     // Update URL without full page reload
                     window.history.replaceState(null, '', `?query=${encodeURIComponent(query)}`);
@@ -82,5 +92,11 @@
                 }
             });
         });</script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="{{ url_for('static', filename='js/smoothstate.js') }}"></script>
+        
+
+
 </body>
 </html>

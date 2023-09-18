@@ -1,0 +1,53 @@
+{
+    "filename": "_sp_Menu",
+    "versions": [
+        {
+            "title": "Menu",
+            "tags": [
+                "sp"
+            ],
+            "content": "<page link='/'>Home</page><article filename='effr'>EFFR    <sub><article filename='Test'>Test</article></sub></article><page link='/manage_articles'>Manage articles    <sub><page link='/new'>New article</page></sub></page>",
+            "timestamp": "2023-08-24T12:50:15.818178"
+        },
+        {
+            "title": "Menu",
+            "tags": [
+                "sp"
+            ],
+            "content": "<page link=\"/\">Home</page>\r\n<article filename=\"effr\">EFFR\r\n    <sub>\r\n        <article filename=\"Test\">Test</article>\r\n    </sub>\r\n</article>\r\n<page link=\"/manage_articles\">Manage Articles\r\n    <sub>\r\n        <page link=\"/new\">New Article</page>\r\n    </sub>\r\n</page>",
+            "timestamp": "2023-08-27T00:24:05.099893"
+        },
+        {
+            "title": "Menu",
+            "tags": [
+                "sp"
+            ],
+            "content": "<page link=\"/\">Home</page>\r\n<article filename=\"effr\">EFFR\r\n    <sub>\r\n        <article filename=\"Test\">Test</article>\r\n        <subend>\r\n    </sub>\r\n</article>\r\n<page link=\"/manage_articles\">Manage Articles\r\n    <sub>\r\n        <page link=\"/new\">New Article</page>\r\n        <subend>\r\n    </sub>\r\n</page>\r\n",
+            "timestamp": "2023-08-28T00:04:44.928328"
+        },
+        {
+            "title": "Menu",
+            "tags": [
+                "sp"
+            ],
+            "content": "<menu>\r\n    <item type=\"page\" link=\"/\">Home</item>\r\n    <item type=\"article\" filename=\"effr\">EFFR\r\n        <subitem type=\"article\" filename=\"Test\">Test</subitem>\r\n    </item>\r\n    <item type=\"page\" link=\"/manage_articles\">Manage Articles\r\n        <subitem type=\"page\" link=\"/new\">New Article</subitem>\r\n    </item>\r\n</menu>",
+            "timestamp": "2023-08-28T00:05:56.324594"
+        },
+        {
+            "title": "Menu",
+            "tags": [
+                "sp"
+            ],
+            "content": "<menu>\r\n    <item type=\"page\" link=\"/\">Home</item>\r\n    <item type=\"article\" filename=\"effr\">EFFR\r\n        <subitem type=\"article\" filename=\"Test\">Test</subitem>\r\n    </item>\r\n    <item type=\"page\" link=\"/manage_articles\">Administration\r\n\t\t    <subitem type=\"page\" link=\"/manage_articles\">New Article</subitem>\r\n        <subitem type=\"page\" link=\"/new\">New Article</subitem>\r\n    </item>\r\n</menu>",
+            "timestamp": "2023-09-18T23:04:58.121420"
+        },
+        {
+            "title": "Menu",
+            "tags": [
+                "sp"
+            ],
+            "content": "<menu>\r\n    <item type=\"page\" link=\"/\">Home</item>\r\n    <item type=\"article\" filename=\"effr\">EFFR\r\n        <subitem type=\"article\" filename=\"Test\">Test</subitem>\r\n    </item>\r\n    <item type=\"page\" link=\"/manage_articles\">Administration\r\n\t\t    <subitem type=\"page\" link=\"/manage_articles\">Manage articles</subitem>\r\n        <subitem type=\"page\" link=\"/new\">New Article</subitem>\r\n    </item>\r\n</menu>",
+            "timestamp": "2023-09-18T23:05:11.795654"
+        }
+    ]
+}

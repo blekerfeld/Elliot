@@ -14,34 +14,11 @@ body {
 
 /* Center content */
 .content {
-    max-width: 75%;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Style navigation menu */
-nav {
-    background-color: #1877f2;
-    padding: 10px 0;
-    text-align: center;
-    color: #fff;
-}
 
-nav a {
-    display: inline-block;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fff;
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    background-color: #0056b3;
-}
 
 /* Style article title and content */
 .article-title {

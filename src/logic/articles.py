@@ -4,6 +4,7 @@ import json
 import difflib
 from flask import request, render_template, redirect, url_for
 from datetime import datetime
+import xml.etree.ElementTree as ET
 
 def load_article(filename):
     file_path = os.path.join('content', filename + '.json')
@@ -193,4 +194,18 @@ def render_article_with_blocks(article_content):
     return rendered_content
 
 
+def parse_menu_content(menu_content):
+    root = ET.fromstring(menu_content)
+    parsed_menu = []
 
+    def parse_item(item):
+        item_type = item.get("type")
+        title = item.text.strip()
+        link = item.get("link", "/") if item_type == "page" else url_for('articles.view_article', filename=item.get("filename"))
+        sub_items = [parse_item(sub) for sub in item.findall("subitem")]
+        return {"type": item_type, "link": link, "title": title, "sub_items": sub_items}
+
+    for item in root.findall("item"):
+        parsed_menu.append(parse_item(item))
+
+    return parsed_menu
